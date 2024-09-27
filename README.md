@@ -117,6 +117,15 @@ Tem em conta que cada tabela possui o seu conjunto de colunas e cada coluna pode
 
    `npm test`
 
+---
+
+- The app is working as it needed: add and delete row, edit cell and save the edition or discarding.
+- I didn't do a lot of styling because I'm not so creative, it's as simple as possible but functionally.
+- I did some unit tests.
+- Some improvements can be done as create a button group (Edit, Confirm, Discard, Add Row) into a separate component, so can be reusable
+
+---
+
 ### Future Improvements
 
 - **Dynamic Header**: Header that depends on the type of entry in each column where the table header adapts based on the data types provided for each column
