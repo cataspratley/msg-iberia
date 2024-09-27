@@ -1,0 +1,23 @@
+Uma seguradora tem alguns dados dos seus produtos de seguro guardados em ficheiros Excel em forma de tabelas.
+No seu processo de modernização, a seguradora decidiu criar uma app com frontend em React que permita efetuar a gestão dos dados destas tabelas.
+A app tem a seguinte estrutura visual:
+	- No cabeçalho apresenta o logo da seguradora no lado esquerdo, uma dropdown para selecionar a tabela que o utilizador pretende ver/editar no
+  centro e um "user menu" no lado direito onde o utilizador pode fazer logout, ver os seus dados, aceder às preferências, etc.
+	- No conteúdo da página apresenta a tabela selecionada ou uma mensagem a pedir para o utilizador selecionar uma tabela caso não tenha nenhuma selecionada
+	- No rodapé apresenta a versão da aplicação
+
+1 - Como dividias este ecrã em componentes React?
+
+
+Quando a app mostra uma tabela, existem 2 modos:
+	- Consulta: a tabela apenas apresenta a informação e não permite a edição dos dados. Existe um botão de Edit na página que ao
+  ser clicado muda a página para o modo de edição;
+	- Edição: todos os campos da tabela ficam editáveis. O botão de Edit desaparece e aparecem 2 novos botões:
+		- Confirm: persiste as alterações feitas pelo utilizador aos dados da tabela
+		- Discard: descarta as alterações feitas pelo utilizador aos dados da tabela
+		- Após clicar num destes botões, a página volta ao modo de consulta
+Existem também botões para adicionar linhas novas à tabela e para eliminar linhas existentes.
+
+2 - Assumindo que foste tu que implementaste todos os componentes, mostra como implementarias o componente que representa uma linha de uma tabela.
+Tem em conta que cada tabela possui o seu conjunto de colunas e cada coluna pode ter um tipo de dados diferente (numérico, texto, data, seleção, etc.).
+

@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+### Enunciado:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Uma seguradora tem alguns dados dos seus produtos de seguro guardados em ficheiros Excel em forma de tabelas.
+No seu processo de modernização, a seguradora decidiu criar uma app com frontend em React que permita efetuar a gestão dos dados destas tabelas.
+A app tem a seguinte estrutura visual:
 
-## Available Scripts
+- No cabeçalho apresenta o logo da seguradora no lado esquerdo, uma dropdown para selecionar a tabela que o utilizador pretende ver/editar no
+  centro e um "user menu" no lado direito onde o utilizador pode fazer logout, ver os seus dados, aceder às preferências, etc.
+- No conteúdo da página apresenta a tabela selecionada ou uma mensagem a pedir para o utilizador selecionar uma tabela caso não tenha nenhuma selecionada
+- No rodapé apresenta a versão da aplicação
 
-In the project directory, you can run:
+#### 1 - Como dividias este ecrã em componentes React?
 
-### `npm start`
+An App file that contains all the components - Header, SelectedTable and Footer.
+The Header component contains the logo image, the dropdown to select the table and the user Menu.
+The SelectedTable component contains the selected table or the blank table image.
+And a Footer component with the version of the app.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The goal is to reuse the components in other parts of the application and each component has a specific responsibility, that helps with maintenance and scalability.
+This structure allows to build a dynamic and responsive layout, and it makes easier for new features.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+###### App.js - Main component with header, the selected table and footer
 
-### `npm test`
+    <div>
+      <Header/>
+      <SelectedTable />
+      <Footer />
+    </div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###### Header.js - Header component with logo, the dropdown to select the table and the user menu
 
-### `npm run build`
+    <div>
+      <Logo/>
+      <SelectTableDropdown />
+      <UserMenu />
+    </div>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+###### Logo.js - Logo component with just an image
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    <img />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+###### SelectTableDropdown.js - Dropdown component with the different options/tables to select
 
-### `npm run eject`
+    <select>
+      <option />
+      <option />
+      <option />
+      ...
+    <select />
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+###### UserMenu.js - UserMenu component with a title and buttons
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    <div>
+      <h1> Menu <h1/>
+      <button>User Account</button>
+      <button>Settings</button>
+      <button>Logout</button>
+    </div>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+###### SelectedTable.js - SelectedTable component with 2 components - Table or an empty table message
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    <div>
+      {tableIsSelected ?
+        <Table />
+        :
+        <EmptyTable />
+      }
+    </div>
 
-## Learn More
+###### Footer.js - Footer component
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    <footer>
+      <p>Version 34</p>
+    </footer>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+Quando a app mostra uma tabela, existem 2 modos:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Consulta: a tabela apenas apresenta a informação e não permite a edição dos dados. Existe um botão de Edit na página que ao
+  ser clicado muda a página para o modo de edição;
+- Edição: todos os campos da tabela ficam editáveis. O botão de Edit desaparece e aparecem 2 novos botões: - Confirm: persiste as alterações feitas pelo utilizador aos dados da tabela - Discard: descarta as alterações feitas pelo utilizador aos dados da tabela - Após clicar num destes botões, a página volta ao modo de consulta
+  Existem também botões para adicionar linhas novas à tabela e para eliminar linhas existentes.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### 2 - Assumindo que foste tu que implementaste todos os componentes, mostra como implementarias o componente que representa uma linha de uma tabela.
 
-### Making a Progressive Web App
+Tem em conta que cada tabela possui o seu conjunto de colunas e cada coluna pode ter um tipo de dados diferente (numérico, texto, data, seleção, etc.).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Installation and Setup
 
-### Advanced Configuration
+#### Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Node.js**: Ensure that you have Node.js installed on your machine.
+- **npm** or **yarn**: You’ll need one of these package managers to install dependencies.
 
-### Deployment
+#### Steps
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Clone the repository
 
-### `npm run build` fails to minify
+   `git clone git@github.com:cataspratley/msg-iberia.git`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. Install dependencies
+
+   `npm install`
+
+3. Run the app: Start the development server to run the app.
+
+   `npm start`
+
+4. Open the app
+
+   open your browser and go to http://localhost:3000
+
+5. Run the tests
+
+   `npm test`
+
+### Future Improvements
+
+- **Dynamic Header**: Header that depends on the type of entry in each column where the table header adapts based on the data types provided for each column
+- **Local Storage**: Implement local storage to persist the table data even after page reloads.
+- **CSV file to JSON**: As the data is coming from a CSV file, probably will be in a CSV file that needs to be converted to JSON.
